@@ -199,8 +199,11 @@ abstract class TransitionRoute<T> extends OverlayRoute<T> {
         '$runtimeType.didReplace called before calling install() or after calling dispose().');
     assert(!_transitionCompleter.isCompleted,
         'Cannot reuse a $runtimeType after disposing it.');
-    if (oldRoute is TransitionRoute)
+    if (oldRoute is TransitionRoute) {
       _controller.value = oldRoute._controller.value;
+    } else if (oldRoute == null && this is TransitionRoute) {
+      _controller.value = 1.0;
+    }
     _animation.addStatusListener(_handleStatusChanged);
     super.didReplace(oldRoute);
   }
