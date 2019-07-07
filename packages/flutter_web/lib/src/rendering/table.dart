@@ -880,7 +880,7 @@ class RenderTable extends RenderBox {
             }
           }
         }
-        assert(tableWidth >= targetWidth);
+        assert(tableWidth + precisionErrorTolerance >= targetWidth);
       }
     } // step 2 and 3 are mutually exclusive
 
