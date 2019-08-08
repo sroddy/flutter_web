@@ -1896,8 +1896,8 @@ class LeaderLayer extends ContainerLayer {
   /// children.
   @override
   void applyTransform(Layer child, Matrix4 transform) {
-    assert(_lastOffset != null);
-    if (_lastOffset != Offset.zero)
+    // assert(_lastOffset != null);
+    if (_lastOffset != null && _lastOffset != Offset.zero)
       transform.translate(_lastOffset.dx, _lastOffset.dy);
   }
 
@@ -2064,7 +2064,7 @@ class FollowerLayer extends ContainerLayer {
       return;
     // If we're linked, check the link is valid.
     assert(link.leader.owner == owner, 'Linked LeaderLayer anchor is not in the same layer tree as the FollowerLayer.');
-    assert(link.leader._lastOffset != null, 'LeaderLayer anchor must come before FollowerLayer in paint order, but the reverse was true.');
+    // assert(link.leader._lastOffset != null, 'LeaderLayer anchor must come before FollowerLayer in paint order, but the reverse was true.');
     // Collect all our ancestors into a Set so we can recognize them.
     final Set<Layer> ancestors = HashSet<Layer>();
     Layer ancestor = parent;
