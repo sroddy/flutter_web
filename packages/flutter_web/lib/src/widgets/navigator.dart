@@ -1918,6 +1918,7 @@ class NavigatorState extends State<Navigator> with TickerProviderStateMixin {
     assert(newRoute.overlayEntries.isEmpty);
     setState(() {
       final Route<dynamic> previousRoute = index > 0 ? _history[index - 1] : null;
+      assert(previousRoute != null, 'We currently do not support placing a route at index 0');
       newRoute._navigator = this;
       final OverlayEntry entryPoint = previousRoute != null
         ? previousRoute.overlayEntries.last
